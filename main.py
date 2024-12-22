@@ -4,14 +4,14 @@ project_root = Path.cwd()
 books_dir = project_root / 'books'
 
 
-def count_characters(words):
+def count_characters(file_contents):
     char_count_dict = {}
-    for word in words:
-        for letter in word.lower():
-            if letter not in char_count_dict.keys():
-                char_count_dict[letter] = 1
-            else:
-                char_count_dict[letter] += 1
+    for letter in file_contents.lower():
+        if letter in char_count_dict.keys():
+            char_count_dict[letter] += 1
+        else:
+            char_count_dict[letter] = 1
+    return char_count_dict
 
 
 def count_words(file_contents):
@@ -29,7 +29,8 @@ def open_book(book):
 def main():
     file_contents = open_book('frankenstein.txt')
     words, word_count = count_words(file_contents)
-    count_characters(words)
+    char_count_dict = count_characters(file_contents)
+    print(char_count_dict['r'])
 
 
 if __name__ == "__main__":
