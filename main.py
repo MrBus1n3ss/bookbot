@@ -7,10 +7,11 @@ books_dir = project_root / 'books'
 def count_characters(file_contents):
     char_count_dict = {}
     for letter in file_contents.lower():
-        if letter in char_count_dict.keys():
-            char_count_dict[letter] += 1
-        else:
-            char_count_dict[letter] = 1
+        if letter.isalpha():
+            if letter in char_count_dict.keys():
+                char_count_dict[letter] += 1
+            else:
+                char_count_dict[letter] = 1
     return char_count_dict
 
 
