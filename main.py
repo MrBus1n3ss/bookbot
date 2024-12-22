@@ -5,9 +5,14 @@ books_dir = project_root / 'books'
 
 
 def count_characters(words):
+    char_count_dict = {}
     for word in words:
         for letter in word.lower():
-            print(letter)
+            if letter not in char_count_dict.keys():
+                char_count_dict[letter] = 1
+            else:
+                char_count_dict[letter] += 1
+
 
 def count_words(file_contents):
     words = file_contents.split()
